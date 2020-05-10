@@ -5,6 +5,8 @@ import (
 	"log"
 	"net/http"
 
+	"io/ioutil"
+
 	"github.com/go-redis/redis"
 	"github.com/gorilla/mux"
 )
@@ -12,7 +14,7 @@ import (
 func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", getAll).Methods("GET")
-	log.Fatal(http.ListenAndServe(":8000", r))
+	log.Fatal(http.ListenAndServe(":8079", r))
 }
 
 func redisClient(s string) string {
@@ -37,6 +39,15 @@ func redisClient(s string) string {
 func getAll(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	s := redisClient("001")
+
+	resp, err := http.Get("http://localhost:8080/")
+	if err != nil {
+		fmt.Println("make sure your api is working")
+	}
+
+	defer resp.Body.Close()
+	respB, err := ioutil.ReadAll(resp.Body)
+
+	s := redisClient(string(respB))
 	fmt.Fprintf(w, "Redis Degeri: %v\n", s)
 }
