@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: s3ls
+  name: s3ls
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: s3ls
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: s3ls
+    spec:
+      containers:
+      - image: asoykan/s3ls
+        imagePullPolicy: IfNotPresent
+        name: s3ls
