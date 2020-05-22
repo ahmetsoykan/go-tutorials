@@ -19,6 +19,7 @@ spec:
       labels:
         run: s3ls
     spec:
+      serviceAccountName: pod-sa
       containers:
       - image: asoykan/s3ls
         imagePullPolicy: IfNotPresent
