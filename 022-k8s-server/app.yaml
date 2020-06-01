@@ -5,7 +5,7 @@ metadata:
     run: go-hello
   name: go-hello
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       run: go-hello

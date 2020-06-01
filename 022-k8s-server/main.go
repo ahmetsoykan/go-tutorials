@@ -14,5 +14,7 @@ func main() {
 	}
 	http.HandleFunc("/", helloHandler)
 	http.HandleFunc("/health", healthHandler)
+	fmt.Println("Server started!")
 	http.ListenAndServe(":8080", nil)
+
 }
