@@ -30,7 +30,6 @@ func ReadConfig(filename string) Config {
 				if len(line) > equal {
 					value = strings.TrimSpace(line[equal+1:])
 				}
-				// assign the config map
 				config[key] = value
 			}
 		}
