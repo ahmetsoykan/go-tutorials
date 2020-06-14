@@ -6,7 +6,7 @@ import (
 
 func main() {
 	fmt.Println("Verilen sayilarin en buyugunu bulup dondurecektir.")
-	greatest := max(2, 6, 4, 76, 126, 62, 11, 76, 124, 12, 500)
+	greatest := max(2, 6, 4, 76, 126, 62, 12, 76, 124, 12, 500)
 	fmt.Println("En buyuk sayi sudur", greatest)
 }
 
