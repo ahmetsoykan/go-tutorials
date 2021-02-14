@@ -20,5 +20,5 @@ func helper(result *[]string, digits, prefix string, index int) {
 
 }
 func main() {
-	fmt.Println(words("534"))
+	fmt.Println(words("555"))
 }
